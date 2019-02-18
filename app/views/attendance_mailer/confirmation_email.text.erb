@@ -1,7 +1,7 @@
-Salut <%= @user.first_name %> et bienvenue chez nous !
+Salut <%= @attendance.attendee.first_name %>!
 ==========================================================
  
-Tu t'es inscrit sur evenbrite-thp.herokuapp.com en utilisant l'e-mail suivant : <%= @user.email %>.
+Tu t'es inscrit à l'event suivant : <%= @attendance.event.title %>.
  
 Pour accéder à ton espace client, connecte-toi via : <%= @url %>.
  

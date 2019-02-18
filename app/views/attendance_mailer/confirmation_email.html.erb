@@ -4,9 +4,9 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Salut <%= @user.first_name %> et bienvenue chez nous !</h1>
+    <h1>Salut <%= @attendance.attendee.first_name %> !</h1>
     <p>
-      Tu t'es inscrit sur evenbrite-thp.herokuapp.com en utilisant l'e-mail suivant : <%= @user.email %>.
+      Tu t'es inscrit à l'event suivant : <%= @attendance.event.title %>.
     </p>
     <p>
       Pour accéder à ton espace client, connecte-toi via : <%= @url %>.

@@ -1,16 +1,16 @@
-class UserMailer < ApplicationMailer
+class AttendanceMailer < ApplicationMailer
 
   default from: 'evenbrite-no-reply@monsite.fr'
  
-  def welcome_email(user)
+  def confirmation_email(attendance)
     #on récupère l'instance user pour ensuite pouvoir la passer à la view en @user
-    @user = user 
+    @attendance = attendance 
 
     #on définit une variable @url qu'on utilisera dans la view d’e-mail
     @url  = 'https://evenbrite-thp.herokuapp.com/login' 
 
     # c'est cet appel à mail() qui permet d'envoyer l’e-mail en définissant destinataire et sujet.
-    mail(to: @user.email, subject: 'Bienvenue chez nous !') 
+    mail(to: @attendance.attendee.email, subject: 'Confirmation d inscription à un évènement') 
   end
 
 end
