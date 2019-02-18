@@ -1,10 +1,10 @@
 FactoryBot.define do
   factory :event do
-    title { "MyString" }
-    description { "MyText" }
-    start_date { "2019-02-11 13:34:50" }
-    duration { 1 }
-    price { 1 }
-    location { "MyString" }
+    title { Faker::Beer.brand}
+    description { Faker::Lorem.paragraph }
+    start_date { Faker::Date.forward(30) }
+    duration { 5 * rand(1..10) }
+    price { rand(1..1000) }
+    location { Faker::Address.city }
   end
 end
