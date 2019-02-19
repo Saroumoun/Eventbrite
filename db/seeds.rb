@@ -3,8 +3,8 @@
  	first_name: Faker::Name.first_name,
   last_name: Faker::Name.last_name,
   description: Faker::Lorem.sentence,
-  encrypted_password: SecureRandom.urlsafe_base64,
-  email: Faker::Internet.email
+  email: "#{Faker::Name.first_name}@yopmail.com",
+  password: "test1234"
  	)
 end
 
