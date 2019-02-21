@@ -1,4 +1,6 @@
 class EventsController < ApplicationController
+	before_action :authenticate_user!, only: [:new, :create]
+
   def index
   	@events = Event.all
   end
@@ -7,5 +9,27 @@ class EventsController < ApplicationController
   end
   def new
   	@event = Event.new
-  end 
+  end
+  def create
+  	# puts "*" * 30
+  	# puts params
+  	# puts "*" * 30
+  	@event = Event.new(
+  		title: params[:title],
+  		description: params[:description], 
+  		start_date: params[:start_date], 
+  		duration: params[:duration].to_i,
+  		price: params[:price].to_i,
+  		location: params[:location],
+  		admin: current_user
+  	)
+
+  	if @event.save
+      flash[:notice] = "Event successfully created"
+      redirect_to @event
+    else
+      render :new
+    end
+
+  end
 end

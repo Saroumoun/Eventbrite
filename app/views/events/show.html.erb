@@ -1,0 +1,25 @@
+<div class="container-fluid">
+	<% if flash[:notice] %>
+	  <div class="alert alert-success mt-3" role="alert">
+	   <div class="notice"> 
+	     <%=flash[:notice] %> 
+	   </div>
+	  </div>
+	<% end %>
+
+	<div class="card text-center mt-3">
+	  <div class="card-header">
+	  	<%= @event.title %>
+	  </div>
+	  <div class="card-body">
+	    <h5 class="card-text"><%= @event.location%></h5>
+	    <p class="card-text">Description : <%= @event.description%></p>
+	    <p class="card-text">Price : <%= @event.price%> €</p>
+	    <p class="card-text">Organizer : <%= @event.admin.email%></p>
+	  </div>
+	  <div class="card-footer text-muted font-italic">
+	  	Start date : <%= @event.start_date.strftime("%Y/%m/%d at %H:%M") %>
+	  	End date : <%= @event.end_date.strftime("%Y/%m/%d at %H:%M") %>
+	  </div>
+	</div>
+</div>
