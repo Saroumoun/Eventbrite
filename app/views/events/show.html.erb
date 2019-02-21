@@ -22,4 +22,7 @@
 	  	End date : <%= @event.end_date.strftime("%Y/%m/%d at %H:%M") %>
 	  </div>
 	</div>
+	<% if signed_in? && ((current_user != @event.admin) || (current_user != @event.attendees)) %>
+		<%= link_to "Register for this event", new_event_attendance_path(@event.id), :class => "btn btn-secondary mt-1"%>		
+	<% end %>
 </div>

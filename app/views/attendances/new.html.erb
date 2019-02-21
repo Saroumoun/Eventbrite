@@ -1,0 +1,24 @@
+<% if @attendance.errors.any? %>
+  <div class="alert alert-danger mt-3" role="alert">
+    <p>Event creation process failed due to:</p>
+      <ul>
+      <% @attendance.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class= "container-fluid">
+	<%= form_tag url_for(action: 'create'), method: "post" do %>
+		<div id="event">
+			<%= text_field_tag 'title', '', class: 'form-control mt-3', placeholder: 'Title'%>
+			<%= datetime_field_tag 'start_date', '', class: 'form-control mt-1'%>
+			<%= number_field_tag 'duration', '', class: 'form-control mt-1', placeholder: 'Duration'%>
+			<%= text_area_tag 'description', '', class: 'form-control mt-1', placeholder: 'Description'%>
+			<%= number_field_tag 'price', '', class: 'form-control mt-1', placeholder: 'Price'%>
+			<%= text_field_tag 'location', '', class: 'form-control mt-1', placeholder: 'Location'%>
+			<%= submit_tag "Create", class: "btn btn-secondary mt-1" %>
+		</div>
+	<% end %>
+</div>
