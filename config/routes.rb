@@ -5,7 +5,6 @@ Rails.application.routes.draw do
 
   resources :events do 
   	resources :attendances
-  	resources :charges, only: [:new, :create]
   end
   
   resources :users, only: [:show]
