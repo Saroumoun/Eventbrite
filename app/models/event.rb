@@ -1,7 +1,7 @@
 class Event < ApplicationRecord
 	belongs_to :admin, foreign_key: 'admin_id', class_name: "User"
-	has_many :attendances
-	has_many :attendees, class_name: "User", through: :attendances
+	has_many :attendances, dependent: :destroy
+	has_many :attendees, class_name: "User", through: :attendances, dependent: :destroy
 
 	validates :start_date, presence: true, date: { after: Proc.new { Time.now }}
 	validates :duration, presence: true, numericality: {greater_than: 0, only_integer:true}

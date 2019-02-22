@@ -1,0 +1,10 @@
+<div class="container-fluid">
+	<h3>List of attendees for your event : </h3>
+	<ul class="list-group mt-3">
+		<% @attendances.each do |attendance| %>
+			<li class="list-group-item"><%= attendance.email %></li>
+		<% end %>
+	</ul>
+	<%= link_to "Edit event", edit_event_path(@event.id), :class => "btn btn-secondary mt-1" %>
+	<%= link_to "Delete", event_path(@event.id), method: "delete", class: "btn btn-danger mt-1", data: { confirm: "Are you sure about deleting this event ?"}%>
+</div>
