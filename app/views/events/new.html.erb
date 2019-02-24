@@ -18,6 +18,7 @@
 			<%= text_area_tag 'description', '', class: 'form-control mt-1', placeholder: 'Description'%>
 			<%= number_field_tag 'price', '', class: 'form-control mt-1', placeholder: 'Price'%>
 			<%= text_field_tag 'location', '', class: 'form-control mt-1', placeholder: 'Location'%>
+			<%= file_field_tag :avatar, class: 'form-control-file mt-1' %>
 			<%= submit_tag "Create", class: "btn btn-secondary mt-1" %>
 		</div>
 	<% end %>
