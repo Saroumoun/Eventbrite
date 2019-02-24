@@ -1,0 +1,5 @@
+<h3 class="mt-3">Add an image for this event ?</h3>
+<%= form_tag event_avatars_path(@event.id), multipart: true do%>
+  <%= file_field_tag :avatar, class: 'form-control-file mt-1'%>
+  <%= submit_tag "Add image", class: 'btn btn-secondary mt-1' %>
+<% end %>

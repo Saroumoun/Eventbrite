@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :events do 
   	resources :attendances
+  	resources :avatars, only: [:new, :create]
   end
   
   resources :users, only: [:show]
