@@ -26,6 +26,7 @@ class EventsController < ApplicationController
       )
 
   	if @event.save
+      @event.avatar.attach(params[:avatar])
       flash[:notice] = "Event successfully created"
       redirect_to @event
     else

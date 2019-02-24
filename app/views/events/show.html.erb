@@ -35,8 +35,6 @@
 	<div class="mt-3">
 		<% if @event.avatar.attached? %>
 	  		<%= image_tag @event.avatar, alt: 'avatar', class: "mt-1" %>
-	  	<% elsif current_user == @event.admin && !@event.avatar.attached? %>
-	  		<%= link_to "Add an image for this event", new_event_avatar_path(@event.id), :class => "btn btn-info mt-1"%>
 		<% else %>
 	  		<p class="mt-1">=== There is no image yet for this event ===</p>
 		<% end %>
