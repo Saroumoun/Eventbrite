@@ -15,15 +15,8 @@ class EventsController < ApplicationController
   end
 
   def create
-  	@event = Event.new(
-  		title: params[:title],
-  		description: params[:description], 
-  		start_date: params[:start_date], 
-  		duration: params[:duration].to_i,
-  		price: params[:price].to_i,
-  		location: params[:location],
-  		admin: current_user
-  	)
+  	@event = Event.new(event_params)
+    @event.admin = current_user
 
   	if @event.save
       flash[:notice] = "Event successfully created"
@@ -71,9 +64,13 @@ class EventsController < ApplicationController
   private
 
     def user_allowed?
-    unless current_user == Event.find(params[:id]).admin
-      flash[:danger] = "You are not allowed to do that"
-      redirect_to root_path
+      unless current_user == Event.find(params[:id]).admin
+        flash[:danger] = "You are not allowed to do that"
+        redirect_to root_path
+      end
     end
-  end
+
+    def event_params
+      params.permit(:title, :description, :start_date, :duration, :price, :location, avatar: [])
+    end
 end
