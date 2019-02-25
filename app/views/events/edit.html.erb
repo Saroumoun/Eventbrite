@@ -1,6 +1,6 @@
 <% if @event.errors.any? %>
   <div class="alert alert-danger mt-3" role="alert">
-    <p>Event creation process failed due to:</p>
+    <p>Event update process failed due to:</p>
       <ul>
       <% @event.errors.full_messages.each do |message| %>
         <li><%= message %></li>

@@ -1,0 +1,22 @@
+<% if @user.errors.any? %>
+  <div class="alert alert-danger mt-3" role="alert">
+    <p>User update process failed due to:</p>
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class= "container-fluid">
+	<%= form_tag url_for(action: 'update'), method: "patch", multipart: true do %>
+		<div id="user">
+			<%= text_field_tag 'first_name', '', class: 'form-control mt-3', placeholder: 'First name'%>
+			<%= text_field_tag 'last_name', '', class: 'form-control mt-1', placeholder: 'Last name' %>
+			<%= text_area_tag 'description', '', class: 'form-control mt-1', placeholder: 'Description' %>
+			<%= file_field_tag :profil_picture, class: 'form-control-file mt-1' %>
+			<%= submit_tag "Update information", class: "btn btn-secondary mt-1" %>
+		</div>
+	<% end %>
+</div>

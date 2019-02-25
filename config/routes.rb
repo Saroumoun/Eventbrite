@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'users/show'
   root 'events#index'
   devise_for :users
 
@@ -7,6 +6,6 @@ Rails.application.routes.draw do
   	resources :attendances
   end
   
-  resources :users, only: [:show]
+  resources :users, only: [:show, :edit, :update]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
