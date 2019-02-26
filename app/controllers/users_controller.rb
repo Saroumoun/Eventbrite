@@ -14,7 +14,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     if @user.update(first_name: params[:first_name], last_name: params[:last_name], description: params[:description])
-      @user.profil_picture.attach(params[:profil_picture])
+      if params[:profil_picture].present?
+        @user.profil_picture.attach(params[:profil_picture])
+      end
       flash[:notice] = "User successfully updated"
       redirect_to @user
     else
