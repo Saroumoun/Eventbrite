@@ -3,7 +3,7 @@ class EventsController < ApplicationController
   before_action :user_allowed?, only: [:edit, :update, :destroy]
 
   def index
-  	@events = Event.all
+  	@events = Event.all.where(validated: true)
   end
 
   def show
@@ -27,7 +27,7 @@ class EventsController < ApplicationController
 
   	if @event.save
       @event.avatar.attach(params[:avatar])
-      flash[:notice] = "Event successfully created"
+      flash[:notice] = "Event successfully created, in queue for approval"
       redirect_to @event
     else
       render :new

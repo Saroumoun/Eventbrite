@@ -1,0 +1,21 @@
+<% if @event.errors.any? %>
+  <div class="alert alert-danger mt-3" role="alert">
+    <p>Event update process failed due to:</p>
+      <ul>
+      <% @event.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class= "container-fluid">
+	<%= form_tag url_for(action: 'update'), method: "patch" do %>
+		<div id="user">
+				<div class="checkbox mt-1">
+					<label>Validate event : <%= check_box_tag 'validated', value = "1", checked = false %></label>
+				</div>
+			<%= submit_tag "Confirm validation", class: "btn btn-secondary mt-1" %>
+		</div>
+	<% end %>
+</div>

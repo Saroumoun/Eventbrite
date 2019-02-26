@@ -26,6 +26,9 @@
 	<% if signed_in? %>
 		<% if current_user == @event.admin %>
 			<%= link_to "Attendees list for my event", event_attendances_path(@event.id), :class => "btn btn-secondary mt-1"%>
+			<% if @event.validated == nil || false %>
+			<p class="mt-1">This event has not been validated yet</p>
+			<% end %>
 		<% elsif @event.attendees.include?(current_user) %>
 		<p> You are registred for this event </p>
 		<% else %>			

@@ -1,0 +1,34 @@
+<div class="container-fluid mt-3">
+	<% if flash[:notice]%>
+  		<div class="alert alert-success mt-3" role="alert">
+   			<div class="notice"> 
+     			<%=flash[:notice] %> 
+   			</div>
+  		</div>
+	<% end %>
+
+	<% if @events.empty? %>
+	<p> No event to validate </p>
+	<% end %> 
+
+	<% @events.each do |event| %>
+		<ul class="list-group mt-3">
+		  <li class="list-group-item disabled">Data for event n°<%= event.id %></li>
+		  <li class="list-group-item">Title : <%= event.title %></li>
+		  <li class="list-group-item">Description : <%= event.description %></li>
+		  <li class="list-group-item">Price : <%= event.price %></li>
+		  <li class="list-group-item">Location : <%= event.location %></li>
+		  <li class="list-group-item">Admin : <%= event.admin.email %></li>
+		  <li class="list-group-item">Validated : 
+		  	<% if event.validated.nil?%>
+		  		In approval queue
+		  	<% else %>
+		  		<%= event.validated %>
+		  	<% end %>		  			
+		  		</li>
+		  	
+		  <%= link_to "Validate event", edit_admin_event_path(event), :class => "list-group-item list-group-item-action list-group-item-info"%>
+		  <%= link_to "Refuse event", admin_event_path(event), method: :delete, data: {confirm: "Refusing an event will delete that event, are you sure ?"}, :class => "list-group-item list-group-item-action list-group-item-danger"%>
+		</ul>
+	<% end %>
+</div>
