@@ -1,4 +1,12 @@
 <div class="container-fluid mt-3">
+	<% if flash[:notice]%>
+  		<div class="alert alert-success mt-3" role="alert">
+   			<div class="notice"> 
+     			<%=flash[:notice] %> 
+   			</div>
+  		</div>
+	<% end %> 
+
 	<% @users.each do |user| %>
 		<ul class="list-group mt-3">
 		  <li class="list-group-item disabled">Data for user n°<%= user.id %></li>
@@ -7,7 +15,7 @@
 		  <li class="list-group-item">Description : <%= user.description %></li>
 		  <li class="list-group-item">Is user admin : <%= user.is_admin %></li>
 		  <%= link_to "Update user info", edit_admin_user_path(user), :class => "list-group-item list-group-item-action list-group-item-info"%>
-		  <%= link_to "Delete user", root_path, :class => "list-group-item list-group-item-action list-group-item-danger"%>
+		  <%= link_to "Delete user", admin_user_path(user), method: :delete, data: {confirm: "Are you sure about deleting this user ?"}, :class => "list-group-item list-group-item-action list-group-item-danger"%>
 		</ul>
 	<% end %>
 </div>

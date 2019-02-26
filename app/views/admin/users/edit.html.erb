@@ -16,9 +16,9 @@
 			<%= text_field_tag 'last_name', @user.last_name, class: 'form-control mt-1', placeholder: 'Last name' %>
 			<%= text_area_tag 'description', @user.description, class: 'form-control mt-1', placeholder: 'Description' %>
 			<% unless @user.is_admin %>
-			<div class="checkbox mt-1">
-				<label>Make admin : <%= check_box_tag 'is_admin', value = "1", checked = false %></label>
-			</div>
+				<div class="checkbox mt-1">
+					<label>Make admin : <%= check_box_tag 'is_admin', value = "1", checked = false %></label>
+				</div>
 			<% end %>
 
 			<%= submit_tag "Update user's information", class: "btn btn-secondary mt-1" %>
